@@ -4,7 +4,8 @@ import {
 } from 'react-native';
 
 // (props)と記載しなくても、この箇所で展開すれば後にprops.textなどの記載が不要になる
-const ListItem = ({ imageUrl, title, author, onPress }) => (
+const ListItem = ({ imageUrl, title, author, onPress }) => {
+    return(
     <TouchableOpacity style={styles.itemContainer} onPress={onPress}>
       <View style={styles.leftContainer}>
      {/* imageUrlはStringだが、!!と2つつけるとtrue/false判定になるので判定が出来る */}
@@ -23,6 +24,7 @@ const ListItem = ({ imageUrl, title, author, onPress }) => (
       </View>
   </TouchableOpacity>
 );
+        }
 export default ListItem;
 
 const styles = StyleSheet.create({

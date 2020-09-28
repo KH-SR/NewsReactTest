@@ -39,7 +39,7 @@ const fetchArticles = async () => {
             author={item.author}
             imageUrl={item.urlToImage}
             title={item.title}
-            onPress={() => navigation.navigate("Article", {article: item.url})}
+            onPress={() => navigation.navigate("Article", {article: {url:item.url,author:item.author,imageUrl:item.urlToImage,title:item.title}})}
           />
         )}
         // listにはStringのkeyが必要
