@@ -3,6 +3,7 @@ import {StyleSheet, View, SafeAreaView, Text, TouchableOpacity} from 'react-nati
 import { WebView } from 'react-native-webview';
 import {useDispatch, useSelector} from 'react-redux';
 import {addClip, deleteClip} from '../store/actions/user';
+import ClipButton from '../components/ClipButton';
 
 export default ArticleScreen = ({route}) => {
 
@@ -20,8 +21,19 @@ const isClipped = () => {
     return clips.some(clip => clip.url ===　url)
     }
 
+const toggleClip = () => {
+if (isClipped()){
+    dispatch(deleteClip({clip:{url,author,imageUrl,title}}));
+}else{
+    dispatch(addClip({clip:{url,author,imageUrl,title}}));
+
+}
+
+}
+
 return (
 <SafeAreaView style={styles.container}>
+    {/* <ClipButton onPress={} enabled={} /> */}
     <TouchableOpacity onPress={() => {dispatch(addClip({clip:{url,author,imageUrl,title}}))}}>
         <Text style={{margin: 10, fontSize:30}}>ADD_CLIP</Text>
     </TouchableOpacity>
