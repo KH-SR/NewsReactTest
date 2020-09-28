@@ -1,19 +1,19 @@
 import React from 'react';
 import {
-  StyleSheet, Text, View, Image,
+  StyleSheet, Text, View, Image, TouchableOpacity
 } from 'react-native';
 
 // (props)と記載しなくても、この箇所で展開すれば後にprops.textなどの記載が不要になる
-const ListItem = ({ imageUrl, title, author }) => (
-  <View>
-    <View style={styles.itemContainer}>
+const ListItem = ({ imageUrl, title, author, onPress }) => (
+    <TouchableOpacity style={styles.itemContainer} onPress={onPress}>
       <View style={styles.leftContainer}>
-        <Image
+     {/* imageUrlはStringだが、!!と2つつけるとtrue/false判定になるので判定が出来る */}
+        {!!imageUrl && (<Image
           style={{ width: 100, height: 100 }}
           source={{
             uri: imageUrl,
           }}
-        />
+        />)}
       </View>
       <View style={styles.rightContainer}>
         <Text numberOfLines={3} style={styles.text}>
@@ -21,9 +21,7 @@ const ListItem = ({ imageUrl, title, author }) => (
         </Text>
         <Text style={styles.subText}>{author}</Text>
       </View>
-    </View>
-  </View>
-
+  </TouchableOpacity>
 );
 export default ListItem;
 
